@@ -4,3 +4,6 @@ heroku container:login
 heroku container:push web -a spb-roulette
 heroku container:release web -a spb-roulette
 https://spb-roulette.herokuapp.com/
+
+-- or --
+Deploy automatically on vercel.com
