@@ -56,6 +56,8 @@ export class AppComponent {
 
   public selectedNumbers: number[] = [];
 
+  public numGamesPlayed: number = 0;
+  public numOfUnSelectedCells: number = 37;
   public debugMessage: string;
   public randomNumbers: string;
 
@@ -102,17 +104,24 @@ export class AppComponent {
     this.randomNumbers = "";
     this.debugMessage = "";
     this.multiSelectedNumbers = [];
+    this.numGamesPlayed = 0;
+    this.numOfUnSelectedCells = 37;
   }
 
   onClicked(event: ITile): void {
+    if (event.isSelected) {
+      this.numGamesPlayed += 1;
+    }
+
     if (event.timesSelected === 0) {
       // do nothing.
     } else if (event.timesSelected === 1) {
+      this.numOfUnSelectedCells -= 1;
       this.selectedNumbers.push(event.faceValue);
     } else if (event.timesSelected === 2) {
       this.multiSelectedNumbers.push(event.faceValue);
     } else {
-      // do nothing.
+      this.multiSelectedNumbers = this.multiSelectedNumbers.filter(p => p !== event.faceValue);
     }
   }
 
@@ -130,7 +139,7 @@ I think that will make it easy.
 also try and keep to the 2:2:1 rule so not more than 2 selections on 1 line 
    */
   onGenerate(): void {
-    const theResult = [];
+    let theResult = [];
 
     const row1Arr = this.row1Numbers.filter(p => !this.selectedNumbers.includes(p));
     const row2Arr = this.row2Numbers.filter(p => !this.selectedNumbers.includes(p));
@@ -159,7 +168,8 @@ also try and keep to the 2:2:1 rule so not more than 2 selections on 1 line
       theResult.push(result1[1]);
     }
 
-    this.randomNumbers = theResult.join(',');
+    theResult = theResult.sort((a, b) => a - b);
+    this.randomNumbers = theResult.join(' - ');
   }
 
   /**

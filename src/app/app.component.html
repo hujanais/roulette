@@ -1,7 +1,9 @@
 <div class="div-container">
-    <div class='div-reset-button'>
+    <div class='div-buttons'>
         <button mat-raised-button color="primary" (click)="onReset()">Reset</button>
         <button mat-raised-button color="primary" (click)="onGenerate()">Generate</button>
+        <div>Games Played: {{numGamesPlayed}}</div>
+        <div>Unplayed Numbers: {{numOfUnSelectedCells}}</div>
     </div>
     <div class='div-roulette-table'>
         <div class='div-roulette-column'>
