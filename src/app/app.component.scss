@@ -1,0 +1,39 @@
+.div-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .div-reset-button {
+    margin: 5px;
+
+    button {
+      margin: 5px;
+    }
+  }
+
+  .div-roulette-table {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+
+    .div-roulette-col {
+      display: flex;
+    }
+
+    .div-roulette-row {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
+
+.div-result {
+  margin: 5px;
+  font-size: xx-large;
+  color: blue;
+}
+
+.div-debug-message {
+  margin: 5px;
+  font-size: small;
+}
